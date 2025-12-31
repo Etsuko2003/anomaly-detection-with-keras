@@ -5,7 +5,7 @@ import joblib
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from keras.models import load_model
-from src.main import preprocess, timeseries_dataset
+from autoencoder_project.main import preprocess, timeseries_dataset 
 
 # --- CONFIGURATION DE LA PAGE ---
 st.set_page_config(page_title="", layout="wide")
