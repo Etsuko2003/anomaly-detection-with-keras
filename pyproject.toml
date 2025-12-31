@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "autoencoder-project"
+version = "0.1.0"
+description = ""
+authors = ["Etsuko2003 <nestoraraba@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+matplotlib = "^3.10.8"
+seaborn = "^0.13.2"
+scikit-learn = "^1.8.0"
+keras = "^3.13.0"
+streamlit = "^1.52.2"
+joblib = "^1.5.3"
+tensorflow = "^2.20.0"
+ipykernel = "^7.1.0"
+plotly = "^6.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
