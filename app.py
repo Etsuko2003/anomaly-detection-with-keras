@@ -8,14 +8,14 @@ from keras.models import load_model
 from src.main import preprocess, timeseries_dataset
 
 # --- CONFIGURATION DE LA PAGE ---
-st.set_page_config(page_title="Analyse Haute Résolution", layout="wide")
-st.title("📊 Analyse Détaillée des Anomalies (Vue 4h)")
+st.set_page_config(page_title="", layout="wide")
+st.title("Analyse détaillée des anomalies (Vue 4h)")
 st.markdown(
-    "La fenêtre est fixée sur **4 heures** pour maintenir une visibilité maximale sur les variations."
+    "Nous avons fixé la fenêtre sur **4 heures** pour maintenir une meilleure visibilité sur les variations."
 )
 
 
-# --- 1. CHARGEMENT DES RESSOURCES ---
+# --- CHARGEMENT DES RESSOURCES ---
 @st.cache_resource
 def load_resources():
     scaler = joblib.load("models/scaler.pkl")
@@ -44,18 +44,18 @@ def get_all_data_and_preds(_model, _scaler):
 scaler, model = load_resources()
 df_proc, scaled_vals, all_preds = get_all_data_and_preds(model, scaler)
 
-# --- 2. ALIGNEMENT TEMPOREL ---
+# --- ALIGNEMENT TEMPOREL ---
 timesteps = 240
 y_true_aligned = scaled_vals[timesteps - 1 : timesteps - 1 + len(all_preds)]
 dates_aligned = df_proc.index[timesteps - 1 : timesteps - 1 + len(all_preds)]
 
-# --- 3. PARAMÈTRES (SIDEBAR) ---
+# --- PARAMÈTRES (SIDEBAR) ---
 st.sidebar.header("Réglages")
 threshold = st.sidebar.slider(
     "Seuil d'anomalie (MSE)", 0.001, 0.05, 0.01, format="%.3f"
 )
 
-# --- 4. CRÉATION DU GRAPHIQUE MULTI-COLONNES ---
+# --- CRÉATION DU GRAPHIQUE MULTI-COLONNES ---
 features = df_proc.columns
 num_features = len(features)
 
