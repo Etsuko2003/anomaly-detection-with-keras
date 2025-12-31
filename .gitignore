@@ -206,4 +206,4 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-anomaly-detection-with-keras/data/household_power_consumption.txt
+/data/household_power_consumption.txt
